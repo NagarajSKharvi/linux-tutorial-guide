@@ -1,0 +1,213 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-BoldOblique;\f2\fnil\fcharset0 LucidaGrande;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgray\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh15200\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs48 \cf0 Day 3\
+FILES AND DIRECTORIES PERMISSION
+\f1\i\b\fs28 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\i0\b0 \cf2 \CocoaLigature0 Nagarajs-MacBook-Air-3:~ nagarajskharvi$ ls -l\
+total 4160\
+drwx------+  25 nagarajskharvi  staff      800 May 15 13:24 Desktop\
+drwxr-xr-x    3 nagarajskharvi  staff       96 Sep  4  2019 neon-workspace\
+-rw-r--r--@   1 nagarajskharvi  staff  1763775 Sep 26  2019 lombok.jar\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\f1\i\b \cf0 \CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\i0\b0\fs36 \cf0 Symbol Type
+\fs28 \
+- Regular file\
+d Directory\
+l Symbolic link
+\f1\i\b \
+
+\f0\i0\b0 \
+
+\fs36 Symbol Permission
+\fs28 \
+r Read\
+w Write\
+x Execute\
+\
+
+\fs36 Permission	 						File						 			Directory\
+
+\fs28 Read (r) 							Allows a file to be read. 				Allows file names in the directory to be read.\
+Write (w)							Allows a file to modified. 				Allows entries to be modified within the directory.\
+Execute (x)							Allows the execution of a file.			Allows access to contents and metadata for entries.\
+\
+\
+
+\fs36 Permission Categories\
+Symbol Category\
+
+\fs28 u User\
+g Group\
+o Other\
+a All\
+\
+
+\fs36 Groups
+\fs28 \
+\uc0\u9679  Every user is in at least one group.\
+\uc0\u9679  Users can belong to many groups.\
+\uc0\u9679  Groups are used to organize users.\
+\uc0\u9679  The groups command displays a user\'92s\
+groups.\
+\uc0\u9679  You can also use id -Gn.\
+\
+groups - displays groups\
+id -Gn - displays groups\
+groups username - displays groups in which user belongs\
+\
+
+\fs36 Users
+\fs28 \
+users - displays users\
+\
+
+\fs36 Changing Permissions
+\fs28 \
+Item 				Meaning\
+chmod 			Change mode command\
+ugoa				User category user, group, other, all\
++-= 				Add, subtract, or set permissions\
+rwx 				Read, Write, Execute\
+\
+Example :\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \CocoaLigature0 ls -l\
+total 0\
+-rw-r--r--  1 nagarajskharvi  staff  0 Oct 11 22:08 a.txt\
+Nagarajs-MacBook-Air-3:p nagarajskharvi$ chmod g+w a.txt \
+Nagarajs-MacBook-Air-3:p nagarajskharvi$ ls -l\
+total 0\
+-rw-rw-r--  1 nagarajskharvi  staff  0 Oct 11 22:08 a.txt\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \CocoaLigature1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \CocoaLigature0 Nagarajs-MacBook-Air-3:p nagarajskharvi$ ls -l\
+total 0\
+-rw-rw-r--  1 nagarajskharvi  staff  0 Oct 11 22:08 a.txt\
+Nagarajs-MacBook-Air-3:p nagarajskharvi$ chmod o=rwx a.txt \
+Nagarajs-MacBook-Air-3:p nagarajskharvi$ ls -l\
+total 0\
+-rw-rw-rwx  1 nagarajskharvi  staff  0 Oct 11 22:08 a.txt\cf0 \CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\
+\
+
+\fs36 Numeric Based Permissions\
+
+\fs28 r w x\
+0 0 0 Value for off\
+1 1 1 Binary value for on\
+4 2 1 Base 10 value for on\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\pardirnatural\partightenfactor0
+
+\fs36 \cf0 Octal 		Binary		String		Description
+\fs28 \
+0			0			--			No Permission\
+1			1			--X			Execute Only\
+2			10			-W-			Write Only\
+3			11			-WX			Write and Execute\
+4			100			R--			Read Only\
+5			101			R-X			Read and Execute\
+6			110			RW-			Read and Write\
+7			111			RWX		Read, Write and Execute\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs36 \cf0 Order Has Meaning\
+
+\fs28 U G O\
+Symbolic rwx r-x r--\
+Binary 111 101 100\
+Decimal 7 5 4\
+\
+\
+
+\fs36 Symbolic Octal
+\fs28 \
+-rwx------ 700\
+-rwxr-xr-x 755\
+-rw-rw-r-- 664\
+-rw-rw---- 660\
+-rw-r--r-- 644\
+\
+\
+\
+
+\fs36 Working with Groups
+\fs28 \
+\uc0\u9679  New files belong to your primary group.\
+\uc0\u9679  The chgrp command changes the group.\
+\
+\
+\
+
+\fs36 Directory Permissions Revisited\
+
+\fs28 \uc0\u9679  Permissions on a directory can effect the files in the directory.\
+\uc0\u9679  If the file permissions look correct, start checking directory permissions.\
+\uc0\u9679  Work your way up to the root.\
+\
+\
+
+\fs36 File Creation Mask\
+
+\fs28 \uc0\u9679  File creation mask determines default permissions.\
+\uc0\u9679  If no mask were used permissions would be:\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 \uc0\u9675 
+\f0  777 for directories\
+
+\f2 \uc0\u9675 
+\f0  666 for files\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs36 \cf0 The umask Command
+\fs28 \
+umask [-S] [mode]\
+\uc0\u9679  Sets the file creation mask to mode, if given.\
+\uc0\u9679  Use -S to for symbolic notation.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs36 \cf0 Special Modes
+\fs72 \
+
+\fs28 \uc0\u9679  umask 0022 is the same as umask 022\
+\uc0\u9679  chmod 0644 is the same as chmod 644\
+\uc0\u9679  The special modes are:\
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf0 \uc0\u9675 
+\f0  setuid\
+
+\f2 \uc0\u9675 
+\f0  setgid\
+
+\f2 \uc0\u9675 
+\f0  sticky\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+}

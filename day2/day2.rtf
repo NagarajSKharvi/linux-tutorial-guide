@@ -1,0 +1,443 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red27\green29\blue31;
+\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c14118\c15294\c16078;
+\csgray\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh15200\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs48 \cf0 Day 2\
+FILES AND DIRECTORIES\
+
+\fs36 Common Top Level Directories
+\fs32 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 Here are the most common top level directories that you need to be aware of and may interact with as a normal user.\
+/ \'93Root,\'94 the top of the file system hierarchy.\
+/bin Binaries and other executable programs.\
+/etc System configuration files.\
+/home Home directories.\
+/opt Optional or third party software.\
+/tmp Temporary space, typically cleared on reboot.\
+/usr User related programs.\
+/var Variable data, most notably log files.
+\fs24 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs36 \cf0 What Is the Shell?
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 \uc0\u9679  The default interface to Linux\
+\uc0\u9679  A program that accepts your commands and executes those commands\
+\uc0\u9679  Also called a command line interpreter (CLI)\
+\
+When we are connecting to Linux system over the network we are typically going to be connecting via SSH, or secure shell\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs36 \cf0 Command Line Interface vs a GUI
+\fs28 \
+\uc0\u9679  The command line is more powerful.\
+\uc0\u9679  There will always be a command line.\
+\uc0\u9679  Server distributions do not include GUIs.\
+\uc0\u9679  Desktop distributions have GUIs and CLIs.\
+\
+For example if we want to rename 100 files at a time it takes more time in GUI, but in CLI we could run a command to perform same task in easier way.\
+sudo apt-get install mmv\
+\'95 ls\
+A1.txt A2.txt A3.txt\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+adding a prefix/suffix to names:\
+mmv '*' 'prefix#1'\
+mmv '*' '#1suffix'\
+\pard\pardeftab720\partightenfactor0
+\cf0 \kerning1\expnd0\expndtw0 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+removing prefix/suffix:\
+mmv 'foo-*' '#1'\
+mmv '*.txt' '#1'\
+\pard\pardeftab720\partightenfactor0
+\cf0 \kerning1\expnd0\expndtw0 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \cb3 \expnd0\expndtw0\kerning0
+changing a\'a0\cb1 suffix\cb3 :\cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+mmv '*.bar' '#1.foo'\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \cb3 turning spaces into undersores:\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \cb1 mmv '* *' '#1_#2'\
+\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \cb3 Change filenames to lowercase (#l) completely:\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \cb1 mmv "*" "#l1"\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \cb3 make filenames uppercase (#u):\
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \cb1 mmv "*" "#u1"\cf0 \kerning1\expnd0\expndtw0 \
+\pard\pardeftab720\sl320\partightenfactor0
+
+\fs26 \cf2 \expnd0\expndtw0\kerning0
+\
+
+\fs28 mmv "index*_type*.txt" "t#2_i#1.txt"\
+\pard\pardeftab720\sl340\partightenfactor0
+\cf4 \cb3 To rename index1_type9.txt to t9_i1.txt
+\fs60 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 Root, the Superuser
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 \uc0\u9679  Root is all powerful.\
+\uc0\u9679  Normal accounts can only do a subset of the things root can do.
+\fs72 \
+
+\fs28 \uc0\u9679  Root access is typically restricted to system administrators. \
+\uc0\u9679  Root access may be required to to install, start, or stop an application.\
+\uc0\u9679  Day to day activities will be performed using a normal account.\
+\
+We need a root access inorder to install application that resides outside of home directory. Also we may need root access to start or stop that application. Applications that run as services or servers typically need root access to start.\
+For example we need root access to start web server. However we you don\'92t need special privileges to start Normal applications like browsers..etc\
+\
+Tilda represents home directory, or current account\'92s home directory.\
+\pard\pardeftab720\partightenfactor0
+
+\fs60 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 Basic Linux Commands
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 Commands in linux are case sensitive. Most of the commands in linux are lowercase.
+\fs72 \
+
+\fs28 \
+\'95 ls - Lists directory\
+\'95 ls -l - Lists directory in a long listing format\
+\'95 ls -a - Lists all directory including hidden directory\
+\'95 ls -al - Lists directory and hidden directory in a long listing format\
+\'95 cd - Changes the current directory.\
+\'95 pwd - Displays the present working directory.\
+\'95 cat - Concatenates and displays files. (Just displays and exits)\
+\'95 vi - Goes to editing mode and displays contents.\
+\'95 echo - Displays arguments to the screen. (Also displaying Constants and env variables)\
+\'95 man - Displays the online manual. (Displays the documentation of the command)\
+Example : man ls\
+	        man pwd\
+\'95 exit - Exits the shell or your current session.\
+\'95 clear - Clears the screen.\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 \'95 which cat - If you want to know the location or the path of the command which you are executing you can use this command\
+If there are multiple programs found then whichever directory occurs first will be considered.\
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf0 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 Navigating Man Pages
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 Enter Move down one line.\
+Space Move down one page.\
+g Move to the top of the page.\
+G Move to the bottom of the page.\
+q Quit.
+\fs60 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 Environmental Variables
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 \'95 Storage location that has a name and a value\
+\'95 Typically uppercase\
+\'95 Access the contents by executing:\
+\'95 echo $VAR_NAME\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 \
+VAR_NAME is usually in caps (All letters)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\fs28 \cf5 \CocoaLigature0  echo $PWD - prints present working directory\
+ echo $OLDPWD - prints previous directory\cf0 \CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 When we search for environment variable user local bin will be searched first. If the command is found there then it gets executed.\
+If not found /bin will be searched and if not found these process goes until the command is found in your path. If not found says Command not found.\
+\
+Start to fish\
+ls /bin - shows lot of programs which are under bin directory\
+/bin has commands like \
+\pard\pardeftab720\partightenfactor0
+
+\fs22 \cf5 \CocoaLigature0 [		chmod		date		echo		hostname	launchctl	ls		pax		rm		sleep		tcsh		wait4path\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+bash		cp		dd		ed		kill		link		mkdir		ps		rmdir		stty		test		zsh\
+cat		csh		df		expr		ksh		ln		mv		pwd		sh		sync		unlink
+\fs28 \cf0 \CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+To get help about a program we could use -\
+git --help\
+zip --help\
+\
+We can search man pages\
+man -k search_term\
+Ex : man -k calendar\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 \
+PATH
+\fs28 \
+\'95 An environment variable\
+\'95 Controls the command search path\
+\'95 Contains a list of directories\
+\
+
+\fs48 Directory Shortcuts
+\fs28 \
+. This directory\
+.. The parent directory\
+cd - Change to the previous directory (Will goto previous directory)\
+\pard\pardeftab720\partightenfactor0
+
+\fs60 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 Creating and Removing Directories
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 mkdir [-p] directory - Create a directory.\
+rmdir [-p] directory - Remove a directory.\
+rm -rf directory - Recursively removes directory.\
+\
+mkdir dir1 - Creates a directory called dir1\
+mkdir dir1/dir2/dir3 - No Such file directory (Because dir2 doesn\'92t exist)\
+mkdir -p dir1/dir2/dir3 - Should specify -p parent\
+rmdir dir1 - Directory not empty\
+rm -rf dir1 - Once we delete directories/Files will be removed recursively and permanently\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 Listing Files
+\fs96 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 $ ls -l\
+-rw-rw-r-- 1 jason users 10400 Sep 27 08:52 sales.data\
+Permissions -rw-rw-r--\
+Number of links 1\
+Owner name jason\
+Group name users\
+Number of bytes in the file 10400\
+Last modification time Sep 27 08:52\
+File name sales.data\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 \
+Listing All Files, Including Hidden Files
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 \'95 Hidden files begin with a period.\
+\'95 Sometimes called \'93dot files.\'94\
+\'95 Hidden files are not displayed by default.\
+\'95 To show hidden files with ls, use ls -a.\
+\'95 Command options can be combined.\
+\'95 ls -l -a is the same as ls -la and ls -al.\
+\pard\pardeftab720\partightenfactor0
+
+\fs96 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 Listing Files by Type
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 Use ls -F to reveal file types.\
+/ Directory\
+@ Link\
+* Executable
+\fs60 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 Symbolic Links
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 \'95 A link is a points to the actual file or directory.\
+\'95 Use the link as if it were the file.\
+\'95 A link can be used to create a shortcut.\
+\'95 Use for long file or directory names.\
+\'95 Use to indicate the current version of software.
+\fs48 \
+\
+Listing Files by Time and in Reverse
+\fs72 \
+
+\fs28 ls -t List files by time. (Most recent first)\
+ls -r Reverse order.\
+ls -latr Long listing including all files reverse sorted by time.\
+\pard\pardeftab720\partightenfactor0
+
+\fs96 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 Listing Files Recursively
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 ls -R Lists files recursively
+\fs60 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 The tree Command
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 Similar to ls -R, but creates visual output.\
+tree List everything in a tree format \
+tree -d List directories only.\
+tree -C Colorize output.
+\fs60 \
+
+\fs28 Note : tree is on a lot of distributions, it may not be installed by default.
+\fs60 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 List Directories, Not Contents
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 ls -d List directory name, not contents.
+\fs60 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 Listing Files with Color
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 ls --color Colorize the output.
+\fs60 \
+\
+
+\fs28 Note : Its better to create files/directories without spaces, you can use -,_, CamelCase (make any letter Caps)
+\fs60 \
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 Working with Spaces in Names
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 \'95 Just say no to spaces!\
+\'95 Alternatives:\
+\'95 Hyphens ( - )\
+\'95 Underscores ( _ )\
+\'95 CamelCase\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 \
+Working with Spaces in Names
+\fs72 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 \'95 Encapsulate the entire file name in quotes.\
+\'95 Use a backslash (\\) to escape spaces.\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs48 \cf0 ls Options
+\fs28 \
+-a List all files, including hidden files.\
+--color List files with colorized output.\
+-d List directory names, not contents.\
+-l Use the long listing format.\
+-r Reverse the order.\
+-R List files recursively.\
+-t Sort by time, most recent first.\
+\
+ls -l\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\fs22 \cf5 \CocoaLigature0 Nagarajs-MacBook-Air-3:~ nagarajskharvi$ ls -l\
+total 4648\
+   0 drwx------@   3 nagarajskharvi  staff       96 May 18 11:50 Applications\
+   8 -rw-r--r--@   1 nagarajskharvi  staff      905 Aug 17 12:22 CertExchangeNagarajShrinivasKharvi.p7c\
+   0 drwx------+ 122 nagarajskharvi  staff     3904 Sep 26 08:53 Desktop\
+   0 drwx------+  36 nagarajskharvi  staff     1152 Oct  4 18:47 Documents\
+   0 drwx------+ 402 nagarajskharvi  staff    12864 Oct  2 15:11 Downloads\
+  32 -rw-r--r--@   1 nagarajskharvi  staff    16265 Jul 13 10:55 IP.pdf
+\fs28 \cf0 \CocoaLigature1  \
+     \'85\'85..\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf5 \CocoaLigature0 ls -l | wc -l Counts number of files and directory (Lines including total number of files : 38)\
+ls | wc -l Counts number of files and directory (37)\cf0 \CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs60 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf0 Note: If you want to display known file you can do \
+ls -l \'93Filename.extension\'94 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf5 \CocoaLigature0 ls -l Linux\\ Cheat\\ Sheet.rtf  OR include them in single quotes/double quotes\
+ls -l \'91Linux Cheat Sheet.rtf\'92\
+-rw-r--r--@ 1 nagarajskharvi  staff  10841 May 17 11:36 Linux Cheat Sheet.rtf\cf0 \CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\pardirnatural\partightenfactor0
+
+\fs28 \cf0 If You want to display files or directory starts with or ends with you can give a command\
+ls -al *.sh - List files/directories ends with .sh\
+ls -al a* - List files/directories starts with a\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf5 \CocoaLigature0 Nagarajs-MacBook-Air-3:Downloads nagarajskharvi$ ls a*.pdf         -> List files starts with a and end with .pdf\
+appointed.pdf	appointment-form (2).pdf	appointment-form (4).pdf      appointment-form.pdf.     appointment-form (1).pdf     appointment-form (3).pdf.    appointment-form (5).pdf\
+Nagarajs-MacBook-Air-3:Downloads nagarajskharvi$ ls a*m.pdf         -> List files starts with a and end with m.pdf\
+appointment-form.pdf\
+Nagarajs-MacBook-Air-3:Downloads nagarajskharvi$ ls a*m*.pdf         -> List files starts with a and contains m and end with .pdf\
+appointment-form (1).pdf	appointment-form (2).pdf	appointment-form (3).pdf.    appointment-form (4).pdf.     appointment-form (5).pdf.    appointment-form.pdf}
