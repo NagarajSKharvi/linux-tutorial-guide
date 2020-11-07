@@ -1,0 +1,254 @@
+Day 2
+FILES AND DIRECTORIES
+Common Top Level Directories
+
+Here are the most common top level directories that you need to be aware of and may interact with as a normal user.
+/ “Root,” the top of the file system hierarchy.
+/bin Binaries and other executable programs.
+/etc System configuration files.
+/home Home directories.
+/opt Optional or third party software.
+/tmp Temporary space, typically cleared on reboot.
+/usr User related programs.
+/var Variable data, most notably log files.
+
+
+
+What Is the Shell?
+● The default interface to Linux
+● A program that accepts your commands and executes those commands
+● Also called a command line interpreter (CLI)
+
+When we are connecting to Linux system over the network we are typically going to be connecting via SSH, or secure shell
+
+Command Line Interface vs a GUI
+● The command line is more powerful.
+● There will always be a command line.
+● Server distributions do not include GUIs.
+● Desktop distributions have GUIs and CLIs.
+
+For example if we want to rename 100 files at a time it takes more time in GUI, but in CLI we could run a command to perform same task in easier way.
+sudo apt-get install mmv
+• ls
+A1.txt A2.txt A3.txt
+
+adding a prefix/suffix to names:
+mmv '*' 'prefix#1'
+mmv '*' '#1suffix'
+
+removing prefix/suffix:
+mmv 'foo-*' '#1'
+mmv '*.txt' '#1'
+
+changing a suffix:
+mmv '*.bar' '#1.foo'
+
+turning spaces into undersores:
+mmv '* *' '#1_#2'
+
+Change filenames to lowercase (#l) completely:
+mmv "*" "#l1"
+make filenames uppercase (#u):
+mmv "*" "#u1"
+
+mmv "index*_type*.txt" "t#2_i#1.txt"
+To rename index1_type9.txt to t9_i1.txt
+
+Root, the Superuser
+● Root is all powerful.
+● Normal accounts can only do a subset of the things root can do.
+● Root access is typically restricted to system administrators. 
+● Root access may be required to to install, start, or stop an application.
+● Day to day activities will be performed using a normal account.
+
+We need a root access inorder to install application that resides outside of home directory. Also we may need root access to start or stop that application. Applications that run as services or servers typically need root access to start.
+For example we need root access to start web server. However we you don’t need special privileges to start Normal applications like browsers..etc
+
+Tilda represents home directory, or current account’s home directory.
+
+Basic Linux Commands
+Commands in linux are case sensitive. Most of the commands in linux are lowercase.
+
+• ls - Lists directory
+• ls -l - Lists directory in a long listing format
+• ls -a - Lists all directory including hidden directory
+• ls -al - Lists directory and hidden directory in a long listing format
+• cd - Changes the current directory.
+• pwd - Displays the present working directory.
+• cat - Concatenates and displays files. (Just displays and exits)
+• vi - Goes to editing mode and displays contents.
+• echo - Displays arguments to the screen. (Also displaying Constants and env variables)
+• man - Displays the online manual. (Displays the documentation of the command)
+Example : man ls
+	        man pwd
+• exit - Exits the shell or your current session.
+• clear - Clears the screen.
+
+• which cat - If you want to know the location or the path of the command which you are executing you can use this command
+If there are multiple programs found then whichever directory occurs first will be considered.
+
+
+
+Navigating Man Pages
+Enter Move down one line.
+Space Move down one page.
+g Move to the top of the page.
+G Move to the bottom of the page.
+q Quit.
+
+Environmental Variables
+• Storage location that has a name and a value
+• Typically uppercase
+• Access the contents by executing:
+• echo $VAR_NAME
+
+VAR_NAME is usually in caps (All letters)
+ echo $PWD - prints present working directory
+ echo $OLDPWD - prints previous directory
+
+When we search for environment variable user local bin will be searched first. If the command is found there then it gets executed.
+If not found /bin will be searched and if not found these process goes until the command is found in your path. If not found says Command not found.
+
+Start to fish
+ls /bin - shows lot of programs which are under bin directory
+/bin has commands like 
+[		chmod		date		echo		hostname	launchctl	ls		pax		rm		sleep		tcsh		wait4path
+bash		cp		dd		ed		kill		link		mkdir		ps		rmdir		stty		test		zsh
+cat		csh		df		expr		ksh		ln		mv		pwd		sh		sync		unlink
+
+To get help about a program we could use -
+git --help
+zip --help
+
+We can search man pages
+man -k search_term
+Ex : man -k calendar
+
+PATH
+• An environment variable
+• Controls the command search path
+• Contains a list of directories
+
+Directory Shortcuts
+. This directory
+.. The parent directory
+cd - Change to the previous directory (Will goto previous directory)
+
+Creating and Removing Directories
+mkdir [-p] directory - Create a directory.
+rmdir [-p] directory - Remove a directory.
+rm -rf directory - Recursively removes directory.
+
+mkdir dir1 - Creates a directory called dir1
+mkdir dir1/dir2/dir3 - No Such file directory (Because dir2 doesn’t exist)
+mkdir -p dir1/dir2/dir3 - Should specify -p parent
+rmdir dir1 - Directory not empty
+rm -rf dir1 - Once we delete directories/Files will be removed recursively and permanently
+
+
+Listing Files
+$ ls -l
+-rw-rw-r-- 1 jason users 10400 Sep 27 08:52 sales.data
+Permissions -rw-rw-r--
+Number of links 1
+Owner name jason
+Group name users
+Number of bytes in the file 10400
+Last modification time Sep 27 08:52
+File name sales.data
+
+Listing All Files, Including Hidden Files
+• Hidden files begin with a period.
+• Sometimes called “dot files.”
+• Hidden files are not displayed by default.
+• To show hidden files with ls, use ls -a.
+• Command options can be combined.
+• ls -l -a is the same as ls -la and ls -al.
+
+Listing Files by Type
+Use ls -F to reveal file types.
+/ Directory
+@ Link
+* Executable
+
+Symbolic Links
+• A link is a points to the actual file or directory.
+• Use the link as if it were the file.
+• A link can be used to create a shortcut.
+• Use for long file or directory names.
+• Use to indicate the current version of software.
+
+Listing Files by Time and in Reverse
+ls -t List files by time. (Most recent first)
+ls -r Reverse order.
+ls -latr Long listing including all files reverse sorted by time.
+
+Listing Files Recursively
+ls -R Lists files recursively
+
+The tree Command
+Similar to ls -R, but creates visual output.
+tree List everything in a tree format 
+tree -d List directories only.
+tree -C Colorize output.
+Note : tree is on a lot of distributions, it may not be installed by default.
+
+List Directories, Not Contents
+ls -d List directory name, not contents.
+
+Listing Files with Color
+ls --color Colorize the output.
+
+Note : Its better to create files/directories without spaces, you can use -,_, CamelCase (make any letter Caps)
+Working with Spaces in Names
+• Just say no to spaces!
+• Alternatives:
+• Hyphens ( - )
+• Underscores ( _ )
+• CamelCase
+
+Working with Spaces in Names
+• Encapsulate the entire file name in quotes.
+• Use a backslash (\) to escape spaces.
+
+
+ls Options
+-a List all files, including hidden files.
+--color List files with colorized output.
+-d List directory names, not contents.
+-l Use the long listing format.
+-r Reverse the order.
+-R List files recursively.
+-t Sort by time, most recent first.
+
+ls -l
+Nagarajs-MacBook-Air-3:~ nagarajskharvi$ ls -l
+total 4648
+   0 drwx------@   3 nagarajskharvi  staff       96 May 18 11:50 Applications
+   8 -rw-r--r--@   1 nagarajskharvi  staff      905 Aug 17 12:22 CertExchangeNagarajShrinivasKharvi.p7c
+   0 drwx------+ 122 nagarajskharvi  staff     3904 Sep 26 08:53 Desktop
+   0 drwx------+  36 nagarajskharvi  staff     1152 Oct  4 18:47 Documents
+   0 drwx------+ 402 nagarajskharvi  staff    12864 Oct  2 15:11 Downloads
+  32 -rw-r--r--@   1 nagarajskharvi  staff    16265 Jul 13 10:55 IP.pdf 
+     ……..
+
+ls -l | wc -l Counts number of files and directory (Lines including total number of files : 38)
+ls | wc -l Counts number of files and directory (37)
+
+Note: If you want to display known file you can do 
+ls -l “Filename.extension” 
+ls -l Linux\ Cheat\ Sheet.rtf  OR include them in single quotes/double quotes
+ls -l ‘Linux Cheat Sheet.rtf’
+-rw-r--r--@ 1 nagarajskharvi  staff  10841 May 17 11:36 Linux Cheat Sheet.rtf
+
+
+If You want to display files or directory starts with or ends with you can give a command
+ls -al *.sh - List files/directories ends with .sh
+ls -al a* - List files/directories starts with a
+
+Nagarajs-MacBook-Air-3:Downloads nagarajskharvi$ ls a*.pdf         -> List files starts with a and end with .pdf
+appointed.pdf	appointment-form (2).pdf	appointment-form (4).pdf      appointment-form.pdf.     appointment-form (1).pdf     appointment-form (3).pdf.    appointment-form (5).pdf
+Nagarajs-MacBook-Air-3:Downloads nagarajskharvi$ ls a*m.pdf         -> List files starts with a and end with m.pdf
+appointment-form.pdf
+Nagarajs-MacBook-Air-3:Downloads nagarajskharvi$ ls a*m*.pdf         -> List files starts with a and contains m and end with .pdf
+appointment-form (1).pdf	appointment-form (2).pdf	appointment-form (3).pdf.    appointment-form (4).pdf.     appointment-form (5).pdf.    appointment-form.pdf
